@@ -7,7 +7,6 @@ function ContactList({ contacts, deleteContact }) {
         contacts.map(({ name, number, id }) => {
             return <ul key={id}>
                 <li>{name} {number}</li>
-                {/* <button type="button" onClick={() => deleteContact(id)}>Delete</button> */}
                 <Button type="button" onClick={() => deleteContact(id)}>Delete</Button>
             </ul>
         })

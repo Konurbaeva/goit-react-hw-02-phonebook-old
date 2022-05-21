@@ -6,7 +6,7 @@ function ContactForm({ handleSubmit, name, handleChange, number, addContact }) {
     return (
         <form onSubmit={handleSubmit}>
             Name
-            <Input
+            <input
                 value={name}
                 onChange={handleChange}
                 placeholder="Enter name"
@@ -17,7 +17,7 @@ function ContactForm({ handleSubmit, name, handleChange, number, addContact }) {
                 required
             />
             Number
-            <Input
+            <input
                 value={number}
                 onChange={handleChange}
                 type="tel"

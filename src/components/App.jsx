@@ -15,21 +15,6 @@ export class App extends Component {
    filter: ''
   }
 
-  // addContact = (e) => {
-  //   const contact = {
-  //     id: nanoid(),
-  //     name: this.state.name,
-  //     number: this.state.number
-  //   };
-
-  //   if (this.state.contacts.find(contact => contact.name === this.state.name))
-  //   return alert(`${this.state.name} is already in contacts`);
-  
-  //   this.setState(({ contacts }) => ({
-  //     contacts: [contact, ...contacts],
-  //   }));
-  // }
-
   addContact= () => {
     const newContact = {
       id: nanoid(),
@@ -37,11 +22,14 @@ export class App extends Component {
       number: this.state.number
     };
 
-    if (this.state.contacts.find(contact => contact.name === this.state.name))
-    return alert(`${this.state.name} is already in contacts`);
-    if (this.state.contacts.find(contact => contact.number === this.state.number))
-    return alert(`${this.state.number} is already in contacts`);
+    if (this.state.contacts.find(contact => contact.name === '' || contact.number === ''))
+    return alert(`${this.state.name} can't be empty`);
 
+      if (this.state.contacts.find(contact => contact.name === this.state.name))
+      return alert(`${this.state.name} is already in contacts`);
+      if (this.state.contacts.find(contact => contact.number === this.state.number))
+      return alert(`${this.state.number} is already in contacts`);
+  
        this.setState(({ contacts }) => ({
        contacts: [...contacts, newContact],
     }));
