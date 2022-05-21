@@ -12,13 +12,26 @@ export class App extends Component {
       {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
       {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
     ],
-   name: '',
-   number: '',
    filter: ''
   }
 
-  addContact = (e) => {
-    const contact = {
+  // addContact = (e) => {
+  //   const contact = {
+  //     id: nanoid(),
+  //     name: this.state.name,
+  //     number: this.state.number
+  //   };
+
+  //   if (this.state.contacts.find(contact => contact.name === this.state.name))
+  //   return alert(`${this.state.name} is already in contacts`);
+  
+  //   this.setState(({ contacts }) => ({
+  //     contacts: [contact, ...contacts],
+  //   }));
+  // }
+
+  addContact= () => {
+    const newContact = {
       id: nanoid(),
       name: this.state.name,
       number: this.state.number
@@ -26,13 +39,16 @@ export class App extends Component {
 
     if (this.state.contacts.find(contact => contact.name === this.state.name))
     return alert(`${this.state.name} is already in contacts`);
-  
-    this.setState(({ contacts }) => ({
-      contacts: [contact, ...contacts],
+    if (this.state.contacts.find(contact => contact.number === this.state.number))
+    return alert(`${this.state.number} is already in contacts`);
+
+       this.setState(({ contacts }) => ({
+       contacts: [...contacts, newContact],
     }));
-  }
+  };
 
   deleteContact = contactId => {
+    console.log('Delete contactId: ' + contactId);
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
@@ -57,18 +73,20 @@ export class App extends Component {
     form.reset();
   };
 
-  
-
 render(){
-  const { contacts, name, number, filter } = this.state;
+  const { contacts, filter } = this.state;
   const borderStyle = {
     padding: '10px',
     border: '1px solid black',
     borderRadius:'5px',
     width:'320px'
 };
-
-const filteredContacts = contacts.filter(({name}) => name.toLowerCase().includes(filter.toLowerCase()))
+// eslint-disable-next-line array-callback-return
+const filteredContacts = contacts.filter(({name}) => {
+  if(name){
+    return name.toLowerCase().includes(filter.toLowerCase())
+  }
+})
 
   return (
     <div
@@ -81,8 +99,8 @@ const filteredContacts = contacts.filter(({name}) => name.toLowerCase().includes
       }}
     >
 <div style={borderStyle}>
-     <ContactForm handleSubmit={this.handleSubmit} name={name} handleChange={this.handleChange}
-     number={number} addContact={this.addContact}/>
+     <ContactForm handleSubmit={this.handleSubmit} name={contacts.name} handleChange={this.handleChange}
+     number={contacts.number} addContact={this.addContact}/>
       </div>
       <div className="Contacts">Contacts</div>
       <Filter filter={filter} handleSearch={this.handleSearch}/>

@@ -34,9 +34,9 @@ function ContactForm({ handleSubmit, name, handleChange, number, addContact }) {
 
 ContactForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     handleChange: PropTypes.func.isRequired,
-    number: PropTypes.string.isRequired,
+    number: PropTypes.string,
     addContact: PropTypes.func.isRequired
 };
 

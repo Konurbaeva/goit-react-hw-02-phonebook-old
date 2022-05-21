@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 function ContactList({ contacts, deleteContact }) {
+    console.log('ContactList contacts: ', contacts);
     return (
         contacts.map(({ name, number, id }) => {
             return <ul key={id}>
