@@ -22,8 +22,10 @@ export class App extends Component {
       number: this.state.number
     };
 
-    if (this.state.contacts.find(contact => contact.name === '' || contact.number === ''))
-    return alert(`${this.state.name} can't be empty`);
+    if (!newContact.name|| !newContact.number){
+    alert("Either name or number must be provided");
+    return false;
+    }
 
       if (this.state.contacts.find(contact => contact.name === this.state.name))
       return alert(`${this.state.name} is already in contacts`);
