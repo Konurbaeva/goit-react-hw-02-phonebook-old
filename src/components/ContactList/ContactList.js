@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 function ContactList({ contacts, deleteContact }) {
+    console.log('ContactList contacts: ', contacts);
     return (
         contacts.map(({ name, number, id }) => {
             return <ul key={id}>
                 <li>{name} {number}</li>
-                {/* <button type="button" onClick={() => deleteContact(id)}>Delete</button> */}
                 <Button type="button" onClick={() => deleteContact(id)}>Delete</Button>
             </ul>
         })
