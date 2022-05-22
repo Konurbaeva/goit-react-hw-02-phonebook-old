@@ -1,5 +1,5 @@
 import {Component} from "react";
-// import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid'
 import ContactForm from "./ContactForm";
 import ContactList from "./ContactList";
 import Filter from "./Filter";
@@ -22,7 +22,6 @@ export class App extends Component {
   //     name: this.state.name,
   //     number: this.state.number
   //   };
-
   //   console.log('newContact: ' + JSON.stringify(newContact))
 
   //   if (!newContact.name|| !newContact.number){
@@ -39,6 +38,12 @@ export class App extends Component {
   //      contacts: [...contacts, newContact],
   //   }));
   // };
+
+  addContact = contact => {  
+     this.setState(prevState => ({   
+         contacts: [...prevState.contacts, contact],  
+   })); 
+  };
 
   deleteContact = contactId => {
     console.log('Delete contactId: ' + contactId);
@@ -87,6 +92,7 @@ const filteredContacts = contacts.filter(({name}) => {
      <ContactForm 
     name={contacts.name}
     number={contacts.number}
+    onSubmit={this.addContact}
      // addContact={this.addContact}
     // onChange={this.handleChange}
       />
