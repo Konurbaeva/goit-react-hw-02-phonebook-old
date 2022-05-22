@@ -1,14 +1,15 @@
-// import PropTypes from 'prop-types';
-import { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Component } from 'react';
 import { nanoid } from 'nanoid'
 
+
 class ContactForm extends Component {
+
     state = {
         name: '',
         number: '',
     };
-
 
     handleChange = e => {
         this.setState({
@@ -16,57 +17,25 @@ class ContactForm extends Component {
         });
     };
 
-    // handleSubmit = e => {
-    //     e.preventDefault();
-    //     const contact = {
-    //         id: nanoid(),
-    //         ...this.state,
-    //     }
-    //     //  this.props.onSubmit(contact);
-
-    //     this.resetForm();
-    // };
+    handleSubmit = e => {
+        e.preventDefault();
+        const contact = {
+            id: nanoid(),
+            ...this.state,
+        }
+        this.props.onSubmit(contact);
+        this.resetForm();
+    };
 
     resetForm = () => {
         this.setState({ name: '', number: '' });
     };
 
-    // addContact = () => {
-    //     const newContact = {
-    //         id: nanoid(),
-    //         name: this.state.name,
-    //         number: this.state.number
-    //     };
-
-    //     console.log('newContact: ' + JSON.stringify(newContact))
-
-    //     console.log('newContact.name: ' + JSON.stringify(newContact.name))
-
-    //     if (!newContact.name || !newContact.number) {
-    //         alert("Either name or number must be provided");
-    //         return false;
-    //     }
-
-    //     if (this.props.contacts.find(contact => contact.name === this.state.name))
-    //         return alert(`${this.state.name} is already in contacts`);
-    //     if (this.props.contacts.find(contact => contact.number === this.state.number))
-    //         return alert(`${this.state.number} is already in contacts`);
-
-    //     // this.setState(({ contacts }) => ({
-    //     //     contacts: [...contacts, newContact],
-    //     // }));
-    //     this.setState(({ contacts }) => ({
-    //         contacts: [...contacts, newContact],
-    //     }));
-    // };
-
     render() {
         return (
-            // <form onSubmit={this.handleSubmit}>
-            <form onSubmit={this.props.addContact(contact)}>
+            <form onSubmit={this.handleSubmit}>
                 Name
                 <Input
-
                     onChange={this.handleChange}
                     placeholder="Enter name"
                     type="text"
@@ -77,7 +46,6 @@ class ContactForm extends Component {
                 />
                 Number
                 <Input
-
                     onChange={this.handleChange}
                     type="tel"
                     name="number"
@@ -86,18 +54,14 @@ class ContactForm extends Component {
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     required
                 />
-                {/* <Button type="button" onClick={this.props.addContact}>Add contact</Button> */}
-                <Button type='submit'
-                // onClick={}
-                >Add contact</Button>
+                <Button type='submit'>Add contact</Button>
             </form>
         );
     }
 }
 
 ContactForm.propTypes = {
-    // onChange: PropTypes.func.isRequired,
-    //  addContact: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
 };
 
 

@@ -16,29 +16,6 @@ export class App extends Component {
    filter: ''
   }
 
-  // addContact= () => {
-  //   const newContact = {
-  //     id: nanoid(),
-  //     name: this.state.name,
-  //     number: this.state.number
-  //   };
-  //   console.log('newContact: ' + JSON.stringify(newContact))
-
-  //   if (!newContact.name|| !newContact.number){
-  //   alert("Either name or number must be provided");
-  //   return false;
-  //   }
-
-  //     if (this.state.contacts.find(contact => contact.name === this.state.name))
-  //     return alert(`${this.state.name} is already in contacts`);
-  //     if (this.state.contacts.find(contact => contact.number === this.state.number))
-  //     return alert(`${this.state.number} is already in contacts`);
-  
-  //      this.setState(({ contacts }) => ({
-  //      contacts: [...contacts, newContact],
-  //   }));
-  // };
-
   addContact = contact => {  
      this.setState(prevState => ({   
          contacts: [...prevState.contacts, contact],  
@@ -56,12 +33,6 @@ export class App extends Component {
    let lowerCase = e.target.value.toLowerCase();
    this.setState({filter: lowerCase});
   }
-
-  // handleChange = e => {
-  //   this.setState({ 
-  //     [e.target.name]: e.currentTarget.value
-  //   });
-  // };
 
 render(){
   const { contacts, filter } = this.state;
@@ -90,11 +61,7 @@ const filteredContacts = contacts.filter(({name}) => {
     >
 <div style={borderStyle}>
      <ContactForm 
-    name={contacts.name}
-    number={contacts.number}
-    onSubmit={this.addContact}
-     // addContact={this.addContact}
-    // onChange={this.handleChange}
+     onSubmit={this.addContact}
       />
       </div>
       <div className="Contacts">Contacts</div>
