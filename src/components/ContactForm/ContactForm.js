@@ -9,6 +9,22 @@ class ContactForm extends Component {
         number: '',
     };
 
+
+    handleChange = e => {
+        this.setState({
+            [e.target.name]: e.currentTarget.value
+        });
+    };
+
+    handleSubmit = e => {
+        e.preventDefault();
+        this.resetForm();
+    };
+
+    resetForm = () => {
+        this.setState({ name: '', number: '' });
+    };
+
     addContact = () => {
         const newContact = {
             id: nanoid(),
@@ -38,25 +54,13 @@ class ContactForm extends Component {
         }));
     };
 
-
-    handleSubmit = e => {
-        e.preventDefault();
-        this.state.onSubmit(this.state);
-
-        this.resetForm();
-    };
-
-    resetForm = () => {
-        this.setState({ name: '', number: '' });
-    };
-
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
                 Name
                 <Input
 
-                    onChange={this.props.handleChange}
+                    onChange={this.handleChange}
                     placeholder="Enter name"
                     type="text"
                     name="name"
@@ -67,7 +71,7 @@ class ContactForm extends Component {
                 Number
                 <Input
 
-                    onChange={this.props.handleChange}
+                    onChange={this.handleChange}
                     type="tel"
                     name="number"
                     placeholder="Enter phone number"
@@ -76,14 +80,14 @@ class ContactForm extends Component {
                     required
                 />
                 {/* <Button type="button" onClick={this.props.addContact}>Add contact</Button> */}
-                <Button type="button" onClick={this.addContact}>Add contact</Button>
+                <Button type='submit' onClick={this.addContact}>Add contact</Button>
             </form>
         );
     }
 }
 
 ContactForm.propTypes = {
-    onChange: PropTypes.func.isRequired,
+    // onChange: PropTypes.func.isRequired,
     //  addContact: PropTypes.func.isRequired
 };
 

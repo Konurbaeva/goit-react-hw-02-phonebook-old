@@ -52,11 +52,11 @@ export class App extends Component {
    this.setState({filter: lowerCase});
   }
 
-  handleChange = e => {
-    this.setState({ 
-      [e.target.name]: e.currentTarget.value
-    });
-  };
+  // handleChange = e => {
+  //   this.setState({ 
+  //     [e.target.name]: e.currentTarget.value
+  //   });
+  // };
 
 render(){
   const { contacts, filter } = this.state;
@@ -88,7 +88,7 @@ const filteredContacts = contacts.filter(({name}) => {
     name={contacts.name}
     number={contacts.number}
      // addContact={this.addContact}
-     onChange={this.handleChange}
+    // onChange={this.handleChange}
       />
       </div>
       <div className="Contacts">Contacts</div>
