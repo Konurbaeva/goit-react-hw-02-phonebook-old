@@ -88,7 +88,7 @@ const filteredContacts = contacts.filter(({name}) => {
     name={contacts.name}
     number={contacts.number}
      addContact={this.addContact}
-    handleChange={this.handleChange}
+     onChange={this.handleChange}
       />
       </div>
       <div className="Contacts">Contacts</div>

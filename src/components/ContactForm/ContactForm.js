@@ -20,12 +20,11 @@ class ContactForm extends Component {
     };
 
     render() {
-        const { name, number } = this.state
         return (
             <form onSubmit={this.handleSubmit}>
                 Name
                 <Input
-                    value={name}
+
                     onChange={this.props.handleChange}
                     placeholder="Enter name"
                     type="text"
@@ -36,7 +35,7 @@ class ContactForm extends Component {
                 />
                 Number
                 <Input
-                    value={number}
+
                     onChange={this.props.handleChange}
                     type="tel"
                     name="number"
@@ -52,9 +51,7 @@ class ContactForm extends Component {
 }
 
 ContactForm.propTypes = {
-    //  name: PropTypes.string,
-    // number: PropTypes.string,
-    handleChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
     addContact: PropTypes.func.isRequired
 };
 
