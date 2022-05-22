@@ -3,7 +3,6 @@ import { Component } from 'react';
 import styled from 'styled-components';
 
 class ContactForm extends Component {
-
     state = {
         name: '',
         number: '',
@@ -11,7 +10,7 @@ class ContactForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.onSubmit(this.state);
+        this.state.onSubmit(this.state);
 
         this.resetForm();
     };
@@ -27,11 +26,12 @@ class ContactForm extends Component {
     };
 
     render() {
+        const { name, number } = this.state
         return (
             <form onSubmit={this.handleSubmit}>
                 Name
                 <Input
-                    value={this.props.name}
+                    value={name}
                     onChange={this.handleChange}
                     placeholder="Enter name"
                     type="text"
@@ -42,7 +42,7 @@ class ContactForm extends Component {
                 />
                 Number
                 <Input
-                    value={this.props.number}
+                    value={number}
                     onChange={this.handleChange}
                     type="tel"
                     name="number"
