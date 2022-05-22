@@ -7,7 +7,12 @@ import Filter from "./Filter";
 
 export class App extends Component {
   state = {
-    contacts: [],
+    contacts: [
+      {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+      {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+    ],
    filter: ''
   }
 
@@ -17,6 +22,8 @@ export class App extends Component {
       name: this.state.name,
       number: this.state.number
     };
+
+    console.log('newContact: ' + JSON.stringify(newContact))
 
     if (!newContact.name|| !newContact.number){
     alert("Either name or number must be provided");
@@ -45,11 +52,11 @@ export class App extends Component {
    this.setState({filter: lowerCase});
   }
 
-  handleChange = e => {
-    this.setState({ 
-      [e.target.name]: e.currentTarget.value
-    });
-  };
+  // handleChange = e => {
+  //   this.setState({ 
+  //     [e.target.name]: e.currentTarget.value
+  //   });
+  // };
 
 render(){
   const { contacts, filter } = this.state;
@@ -80,7 +87,9 @@ const filteredContacts = contacts.filter(({name}) => {
      <ContactForm 
     name={contacts.name}
     number={contacts.number}
-      addContact={this.addContact}/>
+     addContact={this.addContact}
+    // handleChange={this.handleChange}
+      />
       </div>
       <div className="Contacts">Contacts</div>
       <Filter filter={filter} handleSearch={this.handleSearch}/>

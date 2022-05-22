@@ -11,13 +11,14 @@ class ContactForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        this.props.onSubmit(this.state);
+
         this.resetForm();
     };
 
     resetForm = () => {
         this.setState({ name: '', number: '' });
     };
-
 
     handleChange = e => {
         this.setState({
