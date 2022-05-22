@@ -1,5 +1,5 @@
 import {Component} from "react";
-import { nanoid } from 'nanoid'
+// import { nanoid } from 'nanoid'
 import ContactForm from "./ContactForm";
 import ContactList from "./ContactList";
 import Filter from "./Filter";
@@ -16,29 +16,29 @@ export class App extends Component {
    filter: ''
   }
 
-  addContact= () => {
-    const newContact = {
-      id: nanoid(),
-      name: this.state.name,
-      number: this.state.number
-    };
+  // addContact= () => {
+  //   const newContact = {
+  //     id: nanoid(),
+  //     name: this.state.name,
+  //     number: this.state.number
+  //   };
 
-    console.log('newContact: ' + JSON.stringify(newContact))
+  //   console.log('newContact: ' + JSON.stringify(newContact))
 
-    if (!newContact.name|| !newContact.number){
-    alert("Either name or number must be provided");
-    return false;
-    }
+  //   if (!newContact.name|| !newContact.number){
+  //   alert("Either name or number must be provided");
+  //   return false;
+  //   }
 
-      if (this.state.contacts.find(contact => contact.name === this.state.name))
-      return alert(`${this.state.name} is already in contacts`);
-      if (this.state.contacts.find(contact => contact.number === this.state.number))
-      return alert(`${this.state.number} is already in contacts`);
+  //     if (this.state.contacts.find(contact => contact.name === this.state.name))
+  //     return alert(`${this.state.name} is already in contacts`);
+  //     if (this.state.contacts.find(contact => contact.number === this.state.number))
+  //     return alert(`${this.state.number} is already in contacts`);
   
-       this.setState(({ contacts }) => ({
-       contacts: [...contacts, newContact],
-    }));
-  };
+  //      this.setState(({ contacts }) => ({
+  //      contacts: [...contacts, newContact],
+  //   }));
+  // };
 
   deleteContact = contactId => {
     console.log('Delete contactId: ' + contactId);
@@ -87,7 +87,7 @@ const filteredContacts = contacts.filter(({name}) => {
      <ContactForm 
     name={contacts.name}
     number={contacts.number}
-     addContact={this.addContact}
+     // addContact={this.addContact}
      onChange={this.handleChange}
       />
       </div>
