@@ -24,7 +24,10 @@ class ContactForm extends Component {
             ...this.state,
         }
         this.props.onSubmit(contact);
+
+
         this.resetForm();
+
     };
 
     resetForm = () => {
