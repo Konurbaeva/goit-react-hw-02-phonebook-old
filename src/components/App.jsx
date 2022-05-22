@@ -4,6 +4,7 @@ import ContactForm from "./ContactForm";
 import ContactList from "./ContactList";
 import Filter from "./Filter";
 
+
 export class App extends Component {
   state = {
     contacts: [],
@@ -50,16 +51,6 @@ export class App extends Component {
     });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-   // const form = evt.currentTarget;
-   // e.target.reset();
-   // e.currentTarget.reset();
-   console.log('event: ' + e)
-
-   // form.reset();
-  };
-
 render(){
   const { contacts, filter } = this.state;
   const borderStyle = {
@@ -86,8 +77,10 @@ const filteredContacts = contacts.filter(({name}) => {
       }}
     >
 <div style={borderStyle}>
-     <ContactForm handleSubmit={this.handleSubmit} name={contacts.name} handleChange={this.handleChange}
-     number={contacts.number} addContact={this.addContact}/>
+     <ContactForm 
+    name={contacts.name}
+    number={contacts.number}
+      addContact={this.addContact}/>
       </div>
       <div className="Contacts">Contacts</div>
       <Filter filter={filter} handleSearch={this.handleSearch}/>
