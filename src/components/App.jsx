@@ -50,12 +50,14 @@ export class App extends Component {
     });
   };
 
-  handleSubmit = evt => {
-    evt.preventDefault();
-    const form = evt.currentTarget;
-   
+  handleSubmit = e => {
+    e.preventDefault();
+   // const form = evt.currentTarget;
+   // e.target.reset();
+   // e.currentTarget.reset();
+   console.log('event: ' + e)
 
-    form.reset();
+   // form.reset();
   };
 
 render(){
