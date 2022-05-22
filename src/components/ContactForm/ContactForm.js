@@ -19,12 +19,6 @@ class ContactForm extends Component {
         this.setState({ name: '', number: '' });
     };
 
-    handleChange = e => {
-        this.setState({
-            [e.target.name]: e.currentTarget.value
-        });
-    };
-
     render() {
         const { name, number } = this.state
         return (
@@ -32,7 +26,7 @@ class ContactForm extends Component {
                 Name
                 <Input
                     value={name}
-                    onChange={this.handleChange}
+                    onChange={this.props.handleChange}
                     placeholder="Enter name"
                     type="text"
                     name="name"
@@ -43,7 +37,7 @@ class ContactForm extends Component {
                 Number
                 <Input
                     value={number}
-                    onChange={this.handleChange}
+                    onChange={this.props.handleChange}
                     type="tel"
                     name="number"
                     placeholder="Enter phone number"
@@ -60,6 +54,7 @@ class ContactForm extends Component {
 ContactForm.propTypes = {
     //  name: PropTypes.string,
     // number: PropTypes.string,
+    handleChange: PropTypes.func.isRequired,
     addContact: PropTypes.func.isRequired
 };
 
